@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-2.5.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+	http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+	
+	<bean id="loginCotrol" class="control.LoginControl">
+		<property name="user"  ref="user"></property>
+	</bean>
+	<bean id="user" class="control.User"></bean>
+	
+	<!-- HandleMapping 和 ViewResolver 配置即可 -->
+	<!-- 1. 配置HandleMapping组件  用于实现请求和处理器之间的映射 -->
+	<bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+				<prop key="login.do">loginCotrol</prop>
+			</props>
+		</property>
+	</bean>
+	<!-- 2.定义ViewResolver组件 ，实现用于请求和页面之间的映射 -->
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<!-- view用到技术：通配 -->
+		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"></property>
+		<!-- 后缀 -->
+		<property name="suffix" value=".jsp"></property>
+		<!-- 前缀 -->
+		<property name="prefix" value="/"></property>
+	</bean>
+	
+</beans>

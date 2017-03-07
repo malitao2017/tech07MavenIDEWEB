@@ -1,0 +1,19 @@
+
+本机局域网的地址
+http://200.200.203.103:8080/tech07MavenIDEWEB
+
+1.引入 springmvc spring hibernate 的相关包
+2.用户名和密码是 
+admin/admin 
+即可登录
+3.Oracle 需下载上传到库
+<!-- 
+	oracle maven仓库的ojdbc需官方授权，故下本地之后（ojdbc14.jar）,上传到本地的maven库
+	mnv install:install -file -Dfile=d:/ojdbc14.jar -DgroupId=com.orcle -DartifactId=ojdbc14 -Dversion=10.2.0.1.0 -Dpackageing=jar
+ -->
+
+
+
+
+
+
